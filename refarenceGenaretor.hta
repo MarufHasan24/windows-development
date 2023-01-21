@@ -1,0 +1,101 @@
+<!--Code created by Maruf hasan-->
+<!--Date: 21 January, 2023-->
+<html>
+  <body>
+    <div id="buttonCon">
+      <button onclick="myfunction()">Generate</button>
+      <button onclick="reset()">Reset</button>
+    </div>
+    <div id="result"></div>
+  </body>
+  <style>
+    #result {
+      width: 100%;
+      height: auto;
+      color: #087eb4;
+      font-size: 50px;
+      text-align: center;
+      font-weight: bold;
+    }
+    #buttonCon {
+      width: 100%;
+      height: auto;
+      text-align: left;
+    }
+    #buttonCon button {
+      padding: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px;
+    }
+  </style>
+  <script>
+    var fso = new ActiveXObject("Scripting.FileSystemObject"),
+      ref,
+      refPath,
+      path = "C:\\refGenerator",
+      refPrimary = "KBS",
+      content,
+      refSecondary = 0;
+    function myfunction() {
+      //check if folder exists
+      if (!fso.FolderExists(path)) {
+        fso.CreateFolder(path);
+      }
+      //check if file exists
+      if (!fso.FileExists(path + "\\ref.txt")) {
+        fso.CreateTextFile(path + "\\ref.txt");
+        var inp =
+          prompt(
+            "Enter your last reference number. It's for the first time only.",
+            "KBS10000"
+          ) || "KBS10000";
+        refSecondary = parseInt(inp.replace(refPrimary, ""));
+        refSecondary++;
+        refPath = fso.OpenTextFile(path + "\\ref.txt", 2, true);
+        refPath.WriteLine(refPrimary + refSecondary);
+        refPath.Close();
+      } else {
+        if (!fso.OpenTextFile(path + "\\ref.txt", 1, true)) {
+          var inp =
+            prompt(
+              "Enter your last reference number. Somehow, Your data has been deleted",
+              "KBS10000"
+            ) || "KBS10000";
+          refSecondary = parseInt(inp.replace(refPrimary, ""));
+          refSecondary++;
+          var LocalrefPath = fso.OpenTextFile(path + "\\ref.txt", 2, true);
+          LocalrefPath.WriteLine(refPrimary + refSecondary);
+          LocalrefPath.Close();
+        } else {
+          refPath = fso.OpenTextFile(path + "\\ref.txt", 1, true);
+          ref = refPath.ReadAll();
+          refPath.Close();
+          refSecondary = parseInt(ref.replace(refPrimary, ""));
+          refSecondary++;
+          var LocalrefPath = fso.OpenTextFile(path + "\\ref.txt", 2, true);
+          LocalrefPath.WriteLine(refPrimary + refSecondary);
+          LocalrefPath.Close();
+        }
+      }
+      document.getElementById("result").innerHTML = refPrimary + refSecondary;
+    }
+    function reset() {
+      var dissition = confirm("Are you sure?");
+      if (dissition) {
+        var inp =
+          prompt(
+            "Enter your last reference number. It's for the first time only.",
+            "KBS10000"
+          ) ||
+          ref ||
+          "KBS10000";
+        refSecondary = parseInt(inp.replace(refPrimary, ""));
+        refPath = fso.OpenTextFile(path + "\\ref.txt", 2, true);
+        refPath.WriteLine(refPrimary + refSecondary);
+        refPath.Close();
+        document.getElementById("result").innerHTML = "";
+      }
+    }
+  </script>
+</html>
