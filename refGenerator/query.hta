@@ -1,0 +1,71 @@
+<!--Code created by Maruf hasan-->
+<!--Date: 31 January, 2023-->
+<html>
+  <title>Query - Reference Generator</title>
+  <head> 
+  <HTA:APPLICATION
+    WINDOWSTATE="normal"
+		SYSMENU="yes"
+		SHOWINTASKBAR="yes"
+		SELECTION="no"
+		NAVIGABLE="yes"
+		MINIMIZEBUTTON="yes"
+		MAXIMIZEBUTTON="no"
+		INNERBORDER="yes"
+		CONTEXTMENU="no"
+		CAPTION="yes"
+		SCROLL="no"
+		ICON="icon.ico"
+		BORDERSTYLE="normal"		
+    APPLICATIONNAME="Query - Reference Generator"
+    BORDER="thin"
+    SCROLL="no"
+    SINGLEINSTANCE="yes">
+    </head>
+
+  <body background="background.jpg">
+    <div id="input">
+      <label for="year">Year</label>
+      <input type="number" name="year" id="year" placeholder="" />
+      <label for="month">Month</label>
+      <input type="number" name="month" id="month" placeholder="" />
+      <input type="button" id="submit" value="Submit" onclick="submit()" />
+    </div>
+  </body>
+  <style>
+  body {
+    background-color: #fff;
+    color: #000;
+    font-family: "Arial";
+    font-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #input {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #input #submit {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 21px;
+    top: 21px;
+  }
+  #input #submit:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  </style>
+  <script src="query.js"></script>
+</html>

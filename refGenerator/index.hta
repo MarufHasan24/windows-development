@@ -1,1 +1,187 @@
+<!--Code created by Maruf hasan-->
+<!--Date: 21 January, 2023-->
+<html>
 
+<head>
+    <title>Reference Generator</title>
+    <HTA:APPLICATION WINDOWSTATE="normal" SYSMENU="yes" SHOWINTASKBAR="yes" SELECTION="no" NAVIGABLE="yes"
+        MINIMIZEBUTTON="yes" MAXIMIZEBUTTON="no" INNERBORDER="yes" CONTEXTMENU="no" CAPTION="yes" SCROLL="no"
+        ICON="icon.ico" BORDERSTYLE="normal" APPLICATIONNAME="Reference Generator" BORDER="thik" SCROLL="no"
+        SINGLEINSTANCE="yes" ID="oHTA">
+</head>
+
+<body background="background.jpg">
+    <div class="p">
+        <span style="font-size: 20px; font-weight: bold; color: #c10;" id="connection">Not connected yet!</span>
+    </div><br />
+    <div class="inputform">
+        <label for="name">Client Name:</label>
+        <input type="text" id="name" placeholder="Anonymous" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="" />
+    </div><br />
+        <button onclick="myfunction()" id="generate">Generate</button>
+        <button onclick="clipboard()" id="copy">copy</button>
+    <button class="cmd" onclick="button()">
+    <img alt="settings" height="20px" width="20px" src="data:image/png;base64,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" />
+    </button>
+    <div id="buttonCon" class="none">
+        <button id="connect" onclick="checkConnection()">Reconnect</button>
+        <button id="query" onclick="runQ()">Query</button>
+        <button id="reset" onclick="reset()">Reset</button>
+        <button class="cache" onclick="clearChache()">Clear Cache</button>
+        <button class="deleteData" onclick="deleteData()">Delete Data</button>
+        <button class="refresh" onclick="refresh()">Refresh</button>
+    </div>
+    <div id="result"></div>
+    <div id="log"></div>
+
+</body>
+<style>
+    body {
+        font-family: sans-serif;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    #name {
+        width: 200px;
+        height: 30px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    #button {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }   
+    #result {
+        width: 100%;
+        height: auto;
+        color: #087eb4;
+        font-size: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+    #buttonCon {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0px 0px 10px #000;
+    }
+    .none {
+        display: none;
+    }
+    .block {
+        display: block;
+    }
+    .cmd{
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px;
+        right: 5px;
+        position: absolute;
+        top: 15px;
+    }
+    .refresh{
+        background: #1e0;
+        color: #fff;
+    }
+    .deleteData{
+        background: #e55;
+        color: #fff;
+    }
+    .cache{
+        background: #a1a0ae;
+        color: #fff;
+    }
+    button {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px;
+        right: 5px;
+        bottom: 5px;
+    }
+    #settings {
+        width: 100%;
+        text-align: left;
+    }
+    #reset {
+        background: #e10;
+        color: #fff;
+    }
+    #copy,
+    #generate {
+        width: 100px;
+    }
+    .p {
+        width: 100%;
+        height: auto;
+        top: 0;
+    }
+    #connection {
+        display: inline-block;
+    }
+    #connect {
+        display: inline-block;
+        position: absolute;
+        height: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        right: 0;
+    }
+    #email {
+        width: 300px;
+        height: 30px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .td {
+        display: inline-block;
+        height: 20px;
+        text-align: left;
+        padding: 5px;
+    }
+    .th {
+        display: inline-block;
+        height: 20px;
+        text-align: left;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        font-weight: bold;
+    }
+    .td.no0 {
+        width: 50px;
+    }
+    .td.no1 {
+        width: 200px;
+    }
+    .td.no2 {
+        width: 350px;
+    }
+    .td.no3 {
+        width: 150px;
+    }
+    .td.no4 {
+        width: 150px;
+    }
+    .td.no5 {
+        width: 150px;
+    }
+    .tr {
+        display: inline-block;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        height: 20px;
+    }
+</style>
+<script language="javascript" src="share.js"></script>
+<script language="VBScript" src="index.vb"></script>
+</html>
